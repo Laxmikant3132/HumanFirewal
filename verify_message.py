@@ -1,7 +1,7 @@
 import requests
 
 def test_message(body):
-    url = "http://localhost:8000/api/classify-email"
+    url = "https://humanfirewall-backend.onrender.com/api/classify-email"
     payload = {"emailBody": body}
     response = requests.post(url, json=payload)
     print(f"Body: {body[:50]}...")

@@ -9,7 +9,7 @@ start "HumanFirewall Frontend" cmd /c "cd /d %~dp0 && npm run dev"
 
 echo.
 echo ======================================================
-echo Backend: http://localhost:8000
+echo Backend: https://humanfirewall-backend.onrender.com
 echo Frontend: http://localhost:3000
 echo Extension: Load from %~dp0extension
 echo ======================================================

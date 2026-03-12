@@ -1,6 +1,6 @@
 // background.js for URL Analyser Extension
 
-const API_URL = "http://localhost:8000/api/classify-url";
+const API_URL = "https://humanfirewall-backend.onrender.com/api/classify-url";
 
 // Keep track of URLs that the user has already allowed
 let allowedUrls = new Set();
@@ -25,7 +25,7 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
   if (!url || 
       (!url.startsWith("http://") && !url.startsWith("https://")) ||
       url.includes(chrome.runtime.id) ||
-      url.includes("localhost:8000") ||
+      url.includes("humanfirewall-backend.onrender.com") ||
       url.includes("127.0.0.1") ||
       url.includes("chrome://") ||
       url.includes("edge://") ||

@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     statusValue.textContent = chrome.i18n.getMessage("scanning");
     
     try {
-      const response = await fetch("http://localhost:8000/api/classify-url", {
+      const response = await fetch("https://humanfirewall-backend.onrender.com/api/classify-url", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

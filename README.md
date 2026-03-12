@@ -79,7 +79,7 @@ The system uses a sophisticated two-tier approach for maximum accuracy:
 
 #### Option 1: One-Click Startup (Recommended)
 Double-click `run_all.bat` in the root directory. This will automatically launch:
--   **Backend Server**: `http://localhost:8000`
+-   **Backend Server**: `https://humanfirewall-backend.onrender.com`
 -   **Frontend Server**: `http://localhost:3000`
 
 #### Option 2: Manual Startup

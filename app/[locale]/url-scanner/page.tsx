@@ -30,7 +30,7 @@ export default function URLScanner() {
     setResult(null);
 
     try {
-      const response = await fetch("http://localhost:8000/api/classify-url", {
+      const response = await fetch("https://humanfirewall-backend.onrender.com/api/classify-url", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

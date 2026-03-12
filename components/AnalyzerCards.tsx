@@ -37,7 +37,7 @@ const AnalyzerSection = ({ title, description, icon: Icon, placeholder, buttonTe
     
     try {
       if (type === "url") {
-        const response = await fetch("http://localhost:8000/api/classify-url", {
+        const response = await fetch("https://humanfirewall-backend.onrender.com/api/classify-url", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ url: inputValue }),
@@ -51,7 +51,7 @@ const AnalyzerSection = ({ title, description, icon: Icon, placeholder, buttonTe
           details: data.details
         });
       } else if (type === "message") {
-        const response = await fetch("http://localhost:8000/api/classify-email", {
+        const response = await fetch("https://humanfirewall-backend.onrender.com/api/classify-email", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ emailBody: inputValue }),
@@ -65,7 +65,7 @@ const AnalyzerSection = ({ title, description, icon: Icon, placeholder, buttonTe
           reason: data.reason
         });
       } else if (type === "upi") {
-        const response = await fetch("http://localhost:8000/api/classify-upi", {
+        const response = await fetch("https://humanfirewall-backend.onrender.com/api/classify-upi", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ upi: inputValue }),
