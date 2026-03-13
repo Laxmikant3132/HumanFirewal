@@ -67,7 +67,7 @@ const Features = () => {
               <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-10 group-hover:opacity-30 transition-opacity ${feature.color}`} />
               
               <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border border-white/10 group-hover:scale-110 transition-transform ${feature.color}/20 text-white`}>
-                <feature.icon className="w-7 h-7" />
+                {React.createElement(feature.icon, { className: "w-7 h-7" })}
               </div>
               
               <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">
