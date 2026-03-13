@@ -17,32 +17,32 @@ const Hero3D = () => {
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] pointer-events-none" />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8"
+          className="space-y-6 md:space-y-8 text-center lg:text-left"
         >
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-primary text-xs font-mono uppercase tracking-widest">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-primary text-[10px] md:text-xs font-mono uppercase tracking-widest mx-auto lg:mx-0">
             <Zap className="w-3 h-3" />
             <span>{t("badge")}</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight tracking-tight">
-            {t("titlePart1")} <br />
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
+            {t("titlePart1")} <br className="hidden sm:block" />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400 to-accent">
               {t("titlePart2")}
-            </span> <br />
+            </span> <br className="hidden sm:block" />
             {t("titlePart3")}
           </h1>
           
-          <p className="text-lg md:text-xl text-white/60 max-w-xl leading-relaxed">
+          <p className="text-base md:text-lg lg:text-xl text-white/60 max-w-xl leading-relaxed mx-auto lg:mx-0">
             {t("subtitle")}
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
             <button 
               onClick={() => document.getElementById('analyzer')?.scrollIntoView({ behavior: 'smooth' })}
               className="w-full sm:w-auto px-8 py-4 bg-primary text-background font-bold rounded-2xl flex items-center justify-center space-x-2 hover:neon-glow-cyan transition-all group"
@@ -55,13 +55,13 @@ const Hero3D = () => {
             </button>
           </div>
 
-          <div className="flex items-center space-x-8 pt-4">
+          <div className="flex items-center justify-center lg:justify-start space-x-8 pt-4">
             <div className="flex -space-x-3">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-10 h-10 rounded-full border-2 border-background bg-zinc-800" />
+                <div key={i} className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-background bg-zinc-800" />
               ))}
             </div>
-            <p className="text-sm text-white/40">
+            <p className="text-xs md:text-sm text-white/40">
               <span className="text-white font-bold">10k+</span> {t("stats")}
             </p>
           </div>

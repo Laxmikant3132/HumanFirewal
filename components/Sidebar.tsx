@@ -11,6 +11,8 @@ import {
   ShieldAlert, 
   Users, 
   BarChart3, 
+  MessageSquare,
+  Wallet,
   LogOut,
   Shield,
   X
@@ -25,6 +27,8 @@ const Sidebar = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val: bool
   const menuItems = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
     { name: "Email Analyzer", href: "/email-analyzer", icon: MailSearch },
+    { name: "Message Analyzer", href: "/message-analyzer", icon: MessageSquare },
+    { name: "UPI Analyzer", href: "/upi-analyzer", icon: Wallet },
     { name: "URL Scanner", href: "/url-scanner", icon: Globe },
     { name: "Inbox Scanner", href: "/inbox", icon: Inbox },
     { name: "Training Simulator", href: "/training", icon: ShieldAlert },
@@ -32,6 +36,8 @@ const Sidebar = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val: bool
 
   const adminItems = [
     { name: "Admin Panel", href: "/admin", icon: Shield },
+    { name: "Message Analyzer", href: "/message-analyzer", icon: MessageSquare },
+    { name: "UPI Analyzer", href: "/upi-analyzer", icon: Wallet },
     { name: "Employee Directory", href: "/admin/employees", icon: Users },
     { name: "Reports", href: "/reports", icon: BarChart3 },
   ];

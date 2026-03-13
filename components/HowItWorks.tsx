@@ -28,18 +28,18 @@ const HowItWorks = () => {
   }));
 
   return (
-    <section id="how-it-works" className="py-24 relative overflow-hidden">
+    <section id="how-it-works" className="py-12 md:py-24 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20 space-y-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
             {t("title")} <span className="text-primary">{t("highlight")}</span>
           </h2>
-          <p className="text-lg text-white/60">
+          <p className="text-base md:text-lg text-white/60">
             {t("subtitle")}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative">
           {/* Connector lines (Desktop) */}
           <div className="hidden md:block absolute top-[60px] left-[15%] right-[15%] h-[2px] bg-white/5 -z-10" />
           

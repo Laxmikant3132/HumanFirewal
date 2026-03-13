@@ -33,14 +33,14 @@ const Features = () => {
   }));
 
   return (
-    <section id="features" className="py-24">
+    <section id="features" className="py-12 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20 space-y-4">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight"
           >
             {t("title")} <span className="text-primary">{t("highlight")}</span>
           </motion.h2>
@@ -48,13 +48,13 @@ const Features = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-lg text-white/60"
+            className="text-base md:text-lg text-white/60"
           >
             {t("subtitle")}
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}

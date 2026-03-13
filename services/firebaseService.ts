@@ -101,22 +101,29 @@ export const getUserProfile = async (uid: string) => {
 };
 
 // Firestore helper functions
-export const saveEmailAnalysis = async (uid: string, analysis: any) => {
+export const saveEmailAnalysis = async (user_uid: string, analysis: any) => {
   return await addDoc(collection(db, "emails"), {
-    uid,
+    user_uid,
     ...analysis,
     timestamp: Timestamp.now()
   });
 };
 
-export const getEmailsByUserId = async (uid: string) => {
+export const getEmailsByUserId = async (user_uid: string) => {
   const q = query(
     collection(db, "emails"), 
-    where("uid", "==", uid),
+    where("user_uid", "==", user_uid),
     orderBy("timestamp", "desc")
   );
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+};
+
+export const saveEmailLog = async (logData: any) => {
+  return await addDoc(collection(db, "email_logs"), {
+    ...logData,
+    analyzedAt: serverTimestamp()
+  });
 };
 
 export const saveUserAction = async (uid: string, action: any) => {

@@ -34,30 +34,30 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="py-20 relative border-t border-white/5 bg-background overflow-hidden">
+    <footer className="py-12 md:py-20 relative border-t border-white/5 bg-background overflow-hidden">
       {/* Background Decor */}
       <div className="absolute bottom-0 right-0 w-[30%] h-[30%] bg-primary/5 blur-[100px] -z-10" />
       
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-20">
-          <div className="lg:col-span-2 space-y-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 mb-12 md:mb-20">
+          <div className="sm:col-span-2 lg:col-span-2 space-y-6 md:space-y-8">
             <Link href="/" className="flex items-center space-x-2 group">
-              <Shield className="w-10 h-10 text-primary group-hover:scale-110 transition-transform" />
-              <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+              <Shield className="w-8 h-8 md:w-10 md:h-10 text-primary group-hover:scale-110 transition-transform" />
+              <span className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
                 Human Firewall
               </span>
             </Link>
-            <p className="text-white/50 max-w-sm leading-relaxed text-lg">
+            <p className="text-white/50 max-w-sm leading-relaxed text-base md:text-lg">
               {t("description")}
             </p>
-            <div className="flex items-center space-x-5">
+            <div className="flex flex-wrap items-center gap-3 md:gap-5">
               {[Twitter, Github, Linkedin, Facebook, Instagram].map((Icon, i) => (
                 <Link
                   key={i}
                   href="#"
-                  className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300 border border-white/10 hover:border-primary/30"
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-all duration-300 border border-white/10 hover:border-primary/30"
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-4 h-4 md:w-5 md:h-5" />
                 </Link>
               ))}
             </div>

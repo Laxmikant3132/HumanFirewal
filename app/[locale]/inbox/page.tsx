@@ -71,20 +71,28 @@ export default function InboxScanner() {
 
   return (
     <DashboardLayout>
-      <div className="space-y-8 max-w-6xl mx-auto">
-        <header className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-          <div className="space-y-1">
-             <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight flex flex-col md:flex-row items-center md:space-x-3">
-                <Inbox className="w-8 h-8 text-primary mb-2 md:mb-0" />
-                <span>Inbox <span className="text-primary">Scanner</span></span>
-             </h1>
-             <p className="text-white/50 text-base md:text-lg">Integrated real-time mailbox threat monitoring.</p>
+      <div className="space-y-8 md:space-y-12 max-w-3xl mx-auto px-4 sm:px-6">
+        <header className="flex flex-col items-center justify-center space-y-6 text-center w-full py-4">
+          <div className="space-y-4 flex flex-col items-center w-full">
+             <motion.div 
+               initial={{ scale: 0.9, opacity: 0 }}
+               animate={{ scale: 1, opacity: 1 }}
+               className="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-3xl flex items-center justify-center text-primary border border-primary/20 shadow-[0_0_20px_rgba(0,255,255,0.1)] shrink-0"
+             >
+                <Inbox className="w-8 h-8 md:w-10 md:h-10" />
+             </motion.div>
+             <div className="space-y-2 w-full">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight break-words">
+                   Inbox <span className="text-primary">Scanner</span>
+                </h1>
+                <p className="text-white/50 text-sm md:text-lg max-w-lg mx-auto">Integrated real-time mailbox threat monitoring with AI-powered analysis.</p>
+             </div>
           </div>
-          <div className="flex items-center space-x-4 w-full md:w-auto">
+          <div className="flex items-center justify-center w-full max-w-sm mx-auto">
             {!isConnected ? (
               <button 
                  onClick={handleConnectGmail}
-                 className="w-full md:w-auto px-6 py-3 bg-primary/20 border border-primary/30 text-primary rounded-2xl flex items-center justify-center space-x-2 hover:bg-primary/30 transition-all font-bold shadow-[0_0_20px_rgba(0,255,255,0.1)]"
+                 className="w-full px-6 py-3.5 bg-primary/20 border border-primary/30 text-primary rounded-2xl flex items-center justify-center space-x-2 hover:bg-primary/30 transition-all font-bold shadow-[0_0_20px_rgba(0,255,255,0.1)] text-sm md:text-base"
               >
                  <Lock className="w-5 h-5" />
                  <span>Connect Gmail</span>
@@ -92,7 +100,7 @@ export default function InboxScanner() {
             ) : (
               <button 
                  onClick={fetchEmails}
-                 className="w-full md:w-auto px-6 py-3 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center space-x-2 hover:bg-white/10 hover:text-primary transition-all font-bold"
+                 className="w-full px-6 py-3.5 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center space-x-2 hover:bg-white/10 hover:text-primary transition-all font-bold text-sm md:text-base"
               >
                  <RefreshCw className={`w-5 h-5 ${isRefreshing ? "animate-spin" : ""}`} />
                  <span>Sync Gmail</span>
@@ -102,7 +110,7 @@ export default function InboxScanner() {
         </header>
 
         {!isConnected ? (
-          <div className="glass rounded-[32px] md:rounded-[40px] border-white/5 p-8 md:p-12 text-center space-y-6">
+          <div className="glass rounded-[32px] md:rounded-[40px] border-white/5 p-8 md:p-12 text-center space-y-6 max-w-2xl mx-auto">
             <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-2xl md:rounded-3xl flex items-center justify-center mx-auto border border-white/10">
               <Mail className="w-8 h-8 md:w-10 md:h-10 text-white/20" />
             </div>
@@ -120,83 +128,84 @@ export default function InboxScanner() {
         ) : (
           <>
             <div className="glass rounded-[32px] md:rounded-[40px] border-white/5 overflow-hidden shadow-2xl">
-              <div className="p-4 md:p-6 border-b border-white/5 flex flex-col md:flex-row items-center justify-between bg-white/5 backdrop-blur-3xl gap-4">
-                <div className="flex items-center space-x-4 w-full md:w-auto">
-                  <div className="relative group w-full md:w-auto">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 group-focus-within:text-primary transition-colors" />
-                    <input
-                      type="text"
-                      placeholder="Search messages..."
-                      className="pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-primary/50 text-sm transition-all w-full md:w-64"
-                    />
-                  </div>
+              <div className="p-5 md:p-8 border-b border-white/5 flex flex-col md:flex-row items-center justify-between bg-white/[0.02] backdrop-blur-3xl gap-4">
+                <div className="relative group w-full md:w-72">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 group-focus-within:text-primary transition-colors" />
+                  <input
+                    type="text"
+                    placeholder="Search messages..."
+                    className="pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-primary/50 text-sm transition-all w-full"
+                  />
                 </div>
-                <div className="flex items-center space-x-2 text-white/50 text-[10px] md:text-xs font-bold tracking-widest uppercase">
+                <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-white/40 text-[10px] md:text-xs font-bold tracking-widest uppercase shrink-0">
                   <span>{inbox.length} Messages Analyzed</span>
                 </div>
               </div>
 
-              <div className="divide-y divide-white/5 overflow-x-auto">
+              <div className="divide-y divide-white/5">
                 {inbox.length === 0 ? (
                   <div className="p-12 text-center text-white/30 font-bold">No messages found in your inbox.</div>
                 ) : (
                   inbox.map((email, index) => (
                     <motion.div
                       key={email.id}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
                       onClick={() => setSelectedEmail(email)}
-                      className="flex flex-col md:flex-row items-start md:items-center p-4 md:p-6 hover:bg-white/[0.03] transition-all group cursor-pointer relative overflow-hidden gap-4"
+                      className="flex flex-col md:flex-row items-start md:items-center p-5 md:p-6 hover:bg-white/[0.03] transition-all group cursor-pointer relative gap-4 border-b border-white/5 last:border-0 w-full overflow-hidden"
                     >
-                      <div className="flex items-center space-x-4 md:space-x-6 w-full md:w-auto">
-                        <Star className="hidden md:block w-5 h-5 text-white/10 hover:text-warning transition-colors" />
-                        <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl flex items-center justify-center p-0.5 border border-white/10 bg-gradient-to-br ${
+                      <div className="flex items-center space-x-4 w-full md:w-auto shrink-0">
+                        <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl flex items-center justify-center p-0.5 border border-white/10 bg-gradient-to-br shrink-0 ${
                            email.classification === "Safe" ? "from-secondary/30 to-background/30" : 
                            email.classification === "Suspicious" ? "from-warning/30 to-background/30" : "from-danger/30 to-background/30"
                         }`}>
-                           <div className="w-full h-full bg-background rounded-[8px] md:rounded-[10px] flex items-center justify-center">
+                           <div className="w-full h-full bg-background rounded-[10px] md:rounded-[14px] flex items-center justify-center">
                               <Mail className={`w-5 h-5 md:w-6 md:h-6 ${
                                  email.classification === "Safe" ? "text-secondary" : 
                                  email.classification === "Suspicious" ? "text-warning" : "text-danger"
                               }`} />
                            </div>
                         </div>
-                        <div className="flex-1 md:hidden">
-                           <h4 className="text-sm font-bold truncate text-white">{(email.sender.split('<')[0] || "").trim()}</h4>
-                           <p className="text-[10px] text-white/30 uppercase font-black tracking-widest">{email.date}</p>
-                        </div>
-                        <div className={`md:hidden px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border ${
-                            email.classification === "Safe" ? "bg-secondary/10 border-secondary/20 text-secondary" : 
-                            email.classification === "Suspicious" ? "bg-warning/10 border-warning/20 text-warning" : "bg-danger/10 border-danger/20 text-danger"
-                         }`}>
-                            {email.classification}
-                         </div>
-                      </div>
-
-                      <div className="flex-1 min-w-0 grid grid-cols-1 md:grid-cols-4 items-center gap-2 md:gap-8 w-full">
-                        <div className="hidden md:block col-span-1 min-w-0">
+                        <div className="min-w-0 flex-1">
                            <h4 className="text-sm font-bold truncate text-white">{(email.sender.split('<')[0] || "").trim()}</h4>
                            <p className="text-[10px] text-white/30 uppercase font-black tracking-widest truncate">{email.date}</p>
                         </div>
-                        
-                        <div className="col-span-1 md:col-span-2 min-w-0">
-                           <h4 className="text-sm font-bold md:font-medium truncate text-primary">{email.subject}</h4>
-                           <p className="text-xs text-white/40 truncate">{email.snippet}</p>
+                        <div className="md:hidden">
+                           <div className={`px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest border ${
+                              email.classification === "Safe" ? "bg-secondary/10 border-secondary/20 text-secondary" : 
+                              email.classification === "Suspicious" ? "bg-warning/10 border-warning/20 text-warning" : "bg-danger/10 border-danger/20 text-danger"
+                           }`}>
+                              {email.classification}
+                           </div>
+                        </div>
+                      </div>
+
+                      <div className="flex-1 min-w-0 w-full md:grid md:grid-cols-4 md:items-center md:gap-8">
+                        <div className="col-span-1 md:col-span-3 min-w-0 space-y-1 w-full">
+                           <h4 className="text-sm md:text-base font-bold md:font-medium truncate text-primary group-hover:text-primary/80 transition-colors">{email.subject}</h4>
+                           <p className="text-xs text-white/40 line-clamp-2 md:truncate w-full">{email.snippet}</p>
                         </div>
 
-                        <div className="hidden md:flex col-span-1 flex-col items-end space-y-1">
+                        <div className="hidden md:flex col-span-1 flex-col items-end justify-center space-y-1">
                            <div className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border ${
                               email.classification === "Safe" ? "bg-secondary/10 border-secondary/20 text-secondary" : 
                               email.classification === "Suspicious" ? "bg-warning/10 border-warning/20 text-warning" : "bg-danger/10 border-danger/20 text-danger"
                            }`}>
                               {email.classification}
                            </div>
-                           <span className="text-[10px] text-white/20 font-bold uppercase tracking-tighter">Confidence: {email.confidence}</span>
+                           <span className="text-[10px] text-white/20 font-bold uppercase tracking-tighter">Conf: {email.confidence}</span>
                         </div>
                       </div>
 
-                      <div className="hidden md:flex items-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity ml-6">
+                      <div className="md:hidden flex items-center justify-between w-full pt-2 border-t border-white/5 mt-1">
+                        <span className="text-[9px] text-white/20 font-bold uppercase tracking-tighter">Confidence: {email.confidence}</span>
+                        <div className="flex items-center space-x-3">
+                           <ShieldAlert className="w-4 h-4 text-white/20" />
+                        </div>
+                      </div>
+
+                      <div className="hidden md:flex items-center space-x-4 opacity-0 group-hover:opacity-100 transition-opacity ml-4">
                          <button className="p-2 hover:bg-white/10 rounded-lg text-white/40 hover:text-primary transition-all"><ShieldAlert className="w-5 h-5" /></button>
                       </div>
                     </motion.div>
@@ -205,30 +214,30 @@ export default function InboxScanner() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-               <div className="glass p-6 md:p-8 rounded-[32px] md:rounded-[40px] border-white/5 flex items-center space-x-6">
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-primary/10 flex items-center justify-center text-primary font-black text-xl md:text-2xl border border-primary/20 shadow-[0_0_20px_rgba(0,255,255,0.1)]">{inbox.length}</div>
-                  <div className="space-y-1">
-                     <h4 className="font-bold text-base md:text-lg">Total Mails</h4>
-                     <p className="text-white/50 text-xs md:text-sm">Fetched from Gmail API</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+               <div className="glass p-6 md:p-8 rounded-[24px] md:rounded-[40px] border-white/5 flex items-center space-x-5 md:space-x-6">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-primary/10 flex items-center justify-center text-primary font-black text-xl md:text-2xl border border-primary/20 shadow-[0_0_20px_rgba(0,255,255,0.1)] shrink-0">{inbox.length}</div>
+                  <div className="space-y-0.5 md:space-y-1 min-w-0">
+                     <h4 className="font-bold text-sm md:text-lg truncate">Total Mails</h4>
+                     <p className="text-white/50 text-[10px] md:text-sm truncate">Gmail API</p>
                   </div>
                </div>
-               <div className="glass p-6 md:p-8 rounded-[32px] md:rounded-[40px] border-white/5 flex items-center space-x-6">
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-danger/10 flex items-center justify-center text-danger font-black text-xl md:text-2xl border border-danger/20 shadow-[0_0_20px_rgba(239,68,68,0.1)]">
+               <div className="glass p-6 md:p-8 rounded-[24px] md:rounded-[40px] border-white/5 flex items-center space-x-5 md:space-x-6">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-danger/10 flex items-center justify-center text-danger font-black text-xl md:text-2xl border border-danger/20 shadow-[0_0_20px_rgba(239,68,68,0.1)] shrink-0">
                     {inbox.filter(e => e.classification === 'Dangerous').length}
                   </div>
-                  <div className="space-y-1">
-                     <h4 className="font-bold text-base md:text-lg text-danger">Threats Detected</h4>
-                     <p className="text-white/50 text-xs md:text-sm">Potential phishing risks</p>
+                  <div className="space-y-0.5 md:space-y-1 min-w-0">
+                     <h4 className="font-bold text-sm md:text-lg text-danger truncate">Threats</h4>
+                     <p className="text-white/50 text-[10px] md:text-sm truncate">Phishing risks</p>
                   </div>
                </div>
-               <div className="glass p-6 md:p-8 rounded-[32px] md:rounded-[40px] border-white/5 flex items-center space-x-6">
-                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-secondary/10 flex items-center justify-center text-secondary font-black text-xl md:text-2xl border border-secondary/20 shadow-[0_0_20px_rgba(16,185,129,0.1)]">
+               <div className="glass p-6 md:p-8 rounded-[24px] md:rounded-[40px] border-white/5 flex items-center space-x-5 md:space-x-6">
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-secondary/10 flex items-center justify-center text-secondary font-black text-xl md:text-2xl border border-secondary/20 shadow-[0_0_20px_rgba(16,185,129,0.1)] shrink-0">
                     {inbox.filter(e => e.classification === 'Safe').length}
                   </div>
-                  <div className="space-y-1">
-                     <h4 className="font-bold text-base md:text-lg text-secondary">Verified Safe</h4>
-                     <p className="text-white/50 text-xs md:text-sm">Low risk communications</p>
+                  <div className="space-y-0.5 md:space-y-1 min-w-0">
+                     <h4 className="font-bold text-sm md:text-lg text-secondary truncate">Verified Safe</h4>
+                     <p className="text-white/50 text-[10px] md:text-sm truncate">Low risk</p>
                   </div>
                </div>
             </div>
@@ -246,32 +255,32 @@ export default function InboxScanner() {
               className="w-full max-w-3xl glass rounded-[32px] md:rounded-[40px] border-white/10 overflow-hidden flex flex-col max-h-[90vh] shadow-2xl"
             >
               <div className="p-6 md:p-8 border-b border-white/5 flex items-start justify-between bg-white/5">
-                <div className="space-y-4 flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-3">
+                <div className="space-y-4 flex-1 min-w-0 pr-4">
+                  <div className="flex flex-wrap items-center gap-2 md:gap-3">
                     <div className={`px-3 md:px-4 py-1 md:py-1.5 rounded-full text-[8px] md:text-[10px] font-black uppercase tracking-widest border ${
                       selectedEmail.classification === "Safe" ? "bg-secondary/10 border-secondary/20 text-secondary" : 
                       selectedEmail.classification === "Suspicious" ? "bg-warning/10 border-warning/20 text-warning" : "bg-danger/10 border-danger/20 text-danger"
                     }`}>
                       {selectedEmail.classification}
                     </div>
-                    <span className="text-[8px] md:text-[10px] text-white/30 font-bold uppercase tracking-widest">Confidence: {selectedEmail.confidence}</span>
+                    <span className="text-[8px] md:text-[10px] text-white/30 font-bold uppercase tracking-widest">Conf: {selectedEmail.confidence}</span>
                   </div>
-                  <h2 className="text-xl md:text-2xl font-bold text-white leading-tight break-words">{selectedEmail.subject}</h2>
-                  <div className="flex items-center space-x-4">
-                    <div className="hidden sm:flex w-10 h-10 rounded-full bg-white/5 items-center justify-center border border-white/10">
-                      <Mail className="w-5 h-5 text-white/40" />
+                  <h2 className="text-lg md:text-2xl font-bold text-white leading-tight break-words">{selectedEmail.subject}</h2>
+                  <div className="flex items-center space-x-3 md:space-x-4">
+                    <div className="hidden xs:flex w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/5 items-center justify-center border border-white/10 shrink-0">
+                      <Mail className="w-4 h-4 md:w-5 md:h-5 text-white/40" />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-xs md:text-sm font-bold text-white truncate">{selectedEmail.sender}</p>
+                      <p className="text-xs md:text-sm font-bold text-white truncate max-w-[200px] sm:max-w-none">{selectedEmail.sender}</p>
                       <p className="text-[8px] md:text-[10px] text-white/30 uppercase font-black tracking-widest">{selectedEmail.date}</p>
                     </div>
                   </div>
                 </div>
                 <button 
                   onClick={() => setSelectedEmail(null)}
-                  className="p-2 md:p-3 hover:bg-white/10 rounded-xl md:rounded-2xl transition-all"
+                  className="p-2 md:p-3 hover:bg-white/10 rounded-xl md:rounded-2xl transition-all shrink-0"
                 >
-                  <AlertCircle className="w-5 h-5 md:w-6 md:h-6 rotate-45" />
+                  <RefreshCw className="w-5 h-5 md:w-6 md:h-6 rotate-45" />
                 </button>
               </div>
 

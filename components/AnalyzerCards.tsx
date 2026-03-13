@@ -88,29 +88,29 @@ const AnalyzerSection = ({ title, description, icon: Icon, placeholder, buttonTe
   };
 
   return (
-    <div className="py-24 border-b border-white/5 last:border-0 relative">
+    <div className="py-12 md:py-24 border-b border-white/5 last:border-0 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* Left: Info */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="space-y-8"
+          className="space-y-6 md:space-y-8 text-center lg:text-left"
         >
-          <div className="w-20 h-20 rounded-3xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(0,255,255,0.1)]">
-            <Icon className="w-10 h-10" />
+          <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-3xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(0,255,255,0.1)] mx-auto lg:mx-0">
+            <Icon className="w-8 h-8 md:w-10 md:h-10" />
           </div>
           
           <div className="space-y-4">
-            <h3 className="text-4xl font-bold tracking-tight">{title}</h3>
-            <p className="text-xl text-white/50 leading-relaxed max-w-lg">
+            <h3 className="text-3xl md:text-4xl font-bold tracking-tight">{title}</h3>
+            <p className="text-lg md:text-xl text-white/50 leading-relaxed max-w-lg mx-auto lg:mx-0">
               {description}
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-4 pt-4">
+          <div className="flex flex-wrap gap-3 md:gap-4 pt-4 justify-center lg:justify-start">
             {[t("tags.0"), t("tags.1"), t("tags.2")].map(tag => (
               <span key={tag} className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono uppercase tracking-widest text-white/40">
                 {tag}
@@ -124,22 +124,22 @@ const AnalyzerSection = ({ title, description, icon: Icon, placeholder, buttonTe
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="glass p-8 md:p-10 rounded-[40px] border border-white/10 relative shadow-2xl overflow-hidden"
+          className="glass p-6 md:p-10 rounded-[32px] md:rounded-[40px] border border-white/10 relative shadow-2xl overflow-hidden"
         >
-          <div className="absolute top-0 right-0 p-6 text-primary/20 pointer-events-none">
+          <div className="absolute top-0 right-0 p-6 text-primary/20 pointer-events-none hidden md:block">
             <Activity className="w-24 h-24 animate-pulse" />
           </div>
 
           <div className="space-y-6 relative z-10">
             <div className="space-y-4">
-              <label className="text-sm font-bold uppercase tracking-widest text-primary/60">{t("inputSource")}</label>
+              <label className="text-xs md:text-sm font-bold uppercase tracking-widest text-primary/60">{t("inputSource")}</label>
               <div className="relative">
                 {type === "message" ? (
                   <textarea
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder={placeholder}
-                    className="w-full h-48 p-6 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-primary/50 transition-all text-white resize-none placeholder-white/20 text-lg"
+                    className="w-full h-40 md:h-48 p-4 md:p-6 bg-white/5 border border-white/10 rounded-xl md:rounded-2xl focus:outline-none focus:border-primary/50 transition-all text-white resize-none placeholder-white/20 text-base md:text-lg"
                   />
                 ) : (
                   <input
@@ -147,13 +147,13 @@ const AnalyzerSection = ({ title, description, icon: Icon, placeholder, buttonTe
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder={placeholder}
-                    className="w-full p-6 bg-white/5 border border-white/10 rounded-2xl focus:outline-none focus:border-primary/50 transition-all text-white placeholder-white/20 text-lg"
+                    className="w-full p-4 md:p-6 bg-white/5 border border-white/10 rounded-xl md:rounded-2xl focus:outline-none focus:border-primary/50 transition-all text-white placeholder-white/20 text-base md:text-lg"
                   />
                 )}
                 {isScanning && (
-                   <div className="absolute bottom-6 right-6 flex items-center space-x-2 text-primary">
-                      <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-                      <span className="text-xs font-mono tracking-widest uppercase">{t("analyzing")}</span>
+                   <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 flex items-center space-x-2 text-primary">
+                      <div className="w-3 h-3 md:w-4 md:h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                      <span className="text-[10px] md:text-xs font-mono tracking-widest uppercase">{t("analyzing")}</span>
                    </div>
                 )}
               </div>
@@ -164,9 +164,9 @@ const AnalyzerSection = ({ title, description, icon: Icon, placeholder, buttonTe
             <button
               onClick={handleAction}
               disabled={!inputValue || isScanning}
-              className="w-full py-5 bg-primary text-background font-black rounded-2xl hover:neon-glow-cyan disabled:opacity-50 transition-all flex items-center justify-center space-x-3 text-lg"
+              className="w-full py-4 md:py-5 bg-primary text-background font-black rounded-xl md:rounded-2xl hover:neon-glow-cyan disabled:opacity-50 transition-all flex items-center justify-center space-x-3 text-base md:text-lg"
             >
-              <Zap className="w-6 h-6" />
+              <Zap className="w-5 h-5 md:w-6 md:h-6" />
               <span>{isScanning ? t("processing") : buttonText}</span>
             </button>
 
@@ -245,36 +245,36 @@ const AnalyzerSection = ({ title, description, icon: Icon, placeholder, buttonTe
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-md glass p-10 rounded-[48px] border border-white/10 shadow-2xl text-center space-y-8"
+              className="relative w-full max-w-md glass p-8 md:p-10 rounded-[32px] md:rounded-[48px] border border-white/10 shadow-2xl text-center space-y-6 md:space-y-8"
             >
               <button 
                 onClick={() => setShowLoginModal(false)}
-                className="absolute top-8 right-8 text-white/30 hover:text-white transition-colors"
+                className="absolute top-6 right-6 md:top-8 md:right-8 text-white/30 hover:text-white transition-colors"
               >
-                <X className="w-8 h-8" />
+                <X className="w-6 h-6 md:w-8 md:h-8" />
               </button>
 
-              <div className="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto">
-                <Lock className="w-12 h-12 text-primary" />
+              <div className="w-20 h-20 md:w-24 md:h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto">
+                <Lock className="w-10 h-10 md:w-12 md:h-12 text-primary" />
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-3xl font-bold tracking-tight">{t("lockedTitle")}</h3>
-                <p className="text-white/50 text-lg leading-relaxed">
+              <div className="space-y-2 md:space-y-3">
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight">{t("lockedTitle")}</h3>
+                <p className="text-white/50 text-base md:text-lg leading-relaxed">
                   {t("lockedDesc")}
                 </p>
               </div>
 
-              <div className="flex flex-col space-y-4">
+              <div className="flex flex-col space-y-3 md:space-y-4">
                 <Link
                   href="/login"
-                  className="w-full py-5 bg-primary text-background font-black rounded-2xl hover:neon-glow-cyan transition-all text-lg"
+                  className="w-full py-4 md:py-5 bg-primary text-background font-black rounded-xl md:rounded-2xl hover:neon-glow-cyan transition-all text-base md:text-lg"
                 >
                   {t("loginToAccess")}
                 </Link>
                 <Link
                   href="/signup"
-                  className="w-full py-5 bg-white/5 text-white font-black rounded-2xl border border-white/10 hover:bg-white/10 transition-all text-lg"
+                  className="w-full py-4 md:py-5 bg-white/5 text-white font-black rounded-xl md:rounded-2xl border border-white/10 hover:bg-white/10 transition-all text-base md:text-lg"
                 >
                   {t("createFreeAccount")}
                 </Link>
@@ -292,14 +292,14 @@ const AnalyzerCards = () => {
   return (
     <section id="analyzer" className="pt-24 pb-12 relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-32 space-y-6">
-          <div className="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono uppercase tracking-[0.3em]">
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-32 space-y-4 md:space-y-6">
+          <div className="inline-flex items-center space-x-2 px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] md:text-xs font-mono uppercase tracking-[0.3em]">
             <span>{t("platformCapabilities")}</span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
             {t("universal")} <span className="text-primary">{t("detection")}</span>
           </h2>
-          <p className="text-xl text-white/60 leading-relaxed">
+          <p className="text-lg md:text-xl text-white/60 leading-relaxed">
             {t("description")}
           </p>
           <div className="flex justify-center pt-8">
