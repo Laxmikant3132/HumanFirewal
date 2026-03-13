@@ -195,7 +195,7 @@ const AnalyzerSection = ({ title, description, icon: Icon, placeholder, buttonTe
                     
                     {result.reason && (
                       <p className="text-sm text-white/60 leading-relaxed italic border-l-2 border-white/10 pl-4 py-1">
-                        "{result.reason}"
+                        &quot;{result.reason}&quot;
                       </p>
                     )}
 
