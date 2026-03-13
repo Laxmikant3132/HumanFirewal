@@ -54,7 +54,7 @@ const HowItWorks = () => {
             >
               <div className="relative mx-auto">
                 <div className={`w-24 h-24 rounded-3xl mx-auto flex items-center justify-center bg-gradient-to-br ${step.color} border border-white/10 group-hover:scale-110 group-hover:neon-glow-cyan transition-all duration-300 shadow-2xl`}>
-                  <step.icon className="w-10 h-10 text-white" />
+                  {step.icon && React.createElement(step.icon, { className: "w-10 h-10 text-white" })}
                 </div>
                 <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-background border border-white/10 flex items-center justify-center font-bold text-primary">
                   {step.id}
